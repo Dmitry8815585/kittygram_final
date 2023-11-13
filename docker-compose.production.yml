@@ -1,17 +1,17 @@
 version: '3'
-      
+
 volumes:   
   pg_data2:
   static_volume:
   media:
-    
+
 services:
   db:
     image: postgres:13
     volumes:
       - pg_data2:/var/lib/postgresql/data
   backend:
-    image: good8815585/kittygram_backend	
+    image: good8815585/kittygram_backend
     env_file: .env
     volumes:   
       - static_volume:/backend_static
