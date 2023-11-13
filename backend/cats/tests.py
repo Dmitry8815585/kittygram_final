@@ -7,6 +7,7 @@ from rest_framework.test import APIClient
 
 class CatsAPITestCase(TestCase):
     def setUp(self):
+        # noqa: N806
         User = get_user_model()
         self.user = User.objects.create_user(username='auth_user')
         self.client = APIClient()
