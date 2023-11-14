@@ -150,4 +150,4 @@ media/
 
 # Others
 node_modules
-# .env.example
+.env.example
