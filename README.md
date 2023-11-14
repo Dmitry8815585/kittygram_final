@@ -1,26 +1,70 @@
-#  Как работать с репозиторием финального задания
 
-## Что нужно сделать
+# Kittygram
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
+[![Tests](https://github.com/good8815585/kittygram/actions/workflows/tests.yml/badge.svg)](https://github.com/good8815585/kittygram/actions/workflows/tests.yml)
 
-## Как проверить работу с помощью автотестов
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
-```
+Kittygram - сервис для публикации данных о котиках.
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+## Описание
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+Основная идея проекта заключается в запуске проекта Kittygram в контейнерах с 
 
-## Чек-лист для проверки перед отправкой задания
+автоматическим тестированием и деплоем этого проекта на удалённый сервер.
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+## Требования
+
+Прежде чем начать, убедитесь, что у вас установлены следующие инструменты:
+
+- Docker: [установка Docker](https://docs.docker.com/get-docker/)
+- Docker Compose: [установка Docker Compose](https://docs.docker.com/compose/install/)
+- Node.js: [установка Node.js](https://nodejs.org/)
+
+
+## Установка
+
+1. Клонировать репозиторий:
+
+    git clone https://github.com/good8815585/kittygram.git
+    cd kittygram
+
+2. Установить зависимости бэкенда:
+
+    docker-compose -f docker-compose.production.yml run backend python manage.py migrate
+
+3. Установить зависимости фронтенда:
+
+    docker-compose -f docker-compose.production.yml run frontend npm install
+
+4. Собрать статические файлы и собрать Docker-образы:
+
+    docker-compose -f docker-compose.production.yml build
+
+## Запуск
+
+Запустить Docker-контейнеры:
+
+    docker-compose -f docker-compose.production.yml up -d
+
+        Провести миграции и собрать статические файлы:
+
+            docker-compose -f docker-compose.production.yml exec backend python manage.py migrate
+            docker-compose -f docker-compose.production.yml exec backend python manage.py collectstatic
+            docker-compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
+
+
+## Тестирование
+
+    Запустить тесты бэкенда:
+
+        docker-compose -f docker-compose.production.yml exec backend python manage.py test
+
+    Запустить тесты фронтенда:
+
+        docker-compose -f docker-compose.production.yml exec frontend npm run test
+
+## Деплой
+
+    Проект автоматически деплоится при пуше в ветку main с использованием GitHub Actions.
+
+
