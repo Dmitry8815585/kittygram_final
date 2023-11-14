@@ -1,8 +1,7 @@
 
 # Kittygram
 
-[![Tests](https://github.com/good8815585/kittygram/actions/workflows/tests.yml/badge.svg)](https://github.com/good8815585/kittygram/actions/workflows/tests.yml)
-
+[![Main Taski workflow](https://github.com/Dmitry8815585/kittygram_final/actions/workflows/main.yml/badge.svg)](https://github.com/Dmitry8815585/kittygram_final/actions/workflows/main.yml)
 
 Kittygram - сервис для публикации данных о котиках.
 
