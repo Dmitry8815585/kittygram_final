@@ -15,7 +15,8 @@ Kittygram - сервис для публикации данных о котик�
 
 Мои задачи включали в себя настройку WSGI-сервера (Gunicorn) для эффективной работы с бэкенд-приложением проекта, а также настройку веб-сервера Nginx . Я обеспечил шифрование запросов по протоколу HTTPS, написал Dockerfile для создания образов и реализовал запуск таск-менеджера в контейнерах. Дополнительно, процессы тестирования и деплоя проекта были автоматизированы с использованием GitHub Actions.
 
-## Стек проекта: Docker, Nginx, Gunicorn, workflow, GitHub Actions, CI/CD, Linux
+## Стек проекта "таск-менеджер"
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white) ![Gunicorn](https://img.shields.io/badge/Gunicorn-369639?style=for-the-badge&logo=gunicorn&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white) ![CI/CD](https://img.shields.io/badge/CI/CD-4B32C3?style=for-the-badge&logo=github-actions&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
 ## Требования
 
